@@ -1,0 +1,319 @@
+/*colocamos un estilo que resete los estilos globales por defecto del navegador
+ESTILO GLOBAL: para todos los elementos dentro de la pagina:*/
+*{
+    box-sizing: border-box;/*box-sizing: calcula el ancho y el alto de un elemento*/
+    margin: 0;/*sin margenes hacia fuera*/
+    padding: 0;/*sin espaciado hacia dentro */
+
+}
+body{
+    background-color: #000000;
+    color: #ffffff;
+    /*para el fondo colocamos un patron de css el cual utilizamos una pagina que nos permite general estos patrones: hero patterns el cual solo copiamos y pegamos el css*/
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='105' viewBox='0 0 80 105'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='death-star' fill='%23540606' fill-opacity='0.2'%3E%3Cpath d='M20 10a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V10zm15 35a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V45zM20 75a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V75zm30-65a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V10zm0 65a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V75zM35 10a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V10zM5 45a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V45zm0-35a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V10zm60 35a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V45zm0-35a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V10z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    font-size: 16px;
+    /*agregamos la fuente oswald de google fonts*/
+    font-family: 'Oswald', sans-serif;
+
+
+}
+
+a{
+    color: #ffffff;
+    text-decoration: none; /*le quitamos el subrayado y viñetas qeu podrian dejar las listas ul por defecto*/
+}
+
+ul{
+    list-style: none;
+}
+
+.container{  /*la clase container lo contiene el div que es practicamente toda la barra de navegacion**/
+    width: 90%;
+    margin: auto; /*al colocar el ancho (width) al 90% no se refleja, hasta colocar margin:auto*/
+}
+
+/*Navigation**/
+.nav-main{
+    font-size: 17px; /*tamaño de la fuente (letra)*/
+    display: flex;/*me permite tener el contenido uno a lado del otro*/
+    justify-content: space-between;/*para que el contenido utilice todo el ancho disponible*/
+    align-items: center;/*centrar los elementos*/
+    height: 60px;
+    padding: 20px 0; /*1. arriba y abajo, 2.izquierda y derecha*/
+}
+
+.nav-brand{/*la img con la clase nav-brand, la haremos mas pequeña*/
+    width: 50px;
+}
+
+/*nav left*/
+.nav-main ul{
+    display: flex;/*colocamos un elemento a lado de otro*/
+}
+
+.nav-main ul li{
+    padding: 10px; /*crear un espaciado entre los elementos li de la clase nav-main*/
+}
+
+.nav-main ul li a{ /*nos apoyamos del padding de los elementos para crear un espaciado entre el item y el border-bottom */
+    padding: 5px;
+}
+
+.nav-main ul li a:hover{/*seudoclase hover*/
+    border-bottom: 2px solid #ffffff;/**/
+}
+
+.nav-main ul.nav-menu{
+    flex: 1;/*colocamos los elementos ul a lado de la imagen*/
+    margin-left: 20px;/*dejando un espaciado entre imagen y elementos ul*/
+}
+
+.menu-btn{
+    position: absolute;
+    cursor: pointer;
+    right: 30px;
+    top: 15px;
+    z-index: 2;/*nos aseguramos de que siempre este encima inv.....*/
+    display: none;
+}
+
+/*SHOW CASE**/
+/*1. modificamos la class showcase, que es el que contiene todo el elemento (header)*/
+
+/*2. modificamos el hr para separar la seccion del header de la navegacion*/
+hr{
+    margin: 10px 0;
+}
+.showcase{
+    width: 100%;
+    height: 650px;
+    background:url('./img/hack2.jpg') no-repeat center center/cover; /*img centrada y que abarque todo (center/cover)*/
+    padding: 50px; /*para coloca la img por debajo del texto **/
+    margin-bottom: 20px;/*separamos el header de las img del news cards*/
+    display: flex; /*centramos el texto */
+    /*para colocar el texto en la parte inferior de la img*/
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/*Modidicamos el boton que esta dentro de la clase showcase para eso le colocamos una clase al link (etiqueta a)*/ 
+.btn{
+    cursor: pointer;/*para que cambie el cursor al momento de pasarlo por el boton*/
+    padding: 10px 20px; /*10 arriba y abajo, 20 a los lados*/
+    background: #262626;
+    color: #ffffff;
+    font-size: 15px;
+    border: 1px solid #fff;
+    margin: 10px 0; /*separamos el btn del texto 10px arriba y abajo*/
+}
+/*Damos un efecto al btn de opacidad cuando pasamos el cursor con la seudoclase hover*/
+.btn:hover {
+    opacity: .7;
+}
+
+/*modificamos el espacion del texto h2 y el p*/
+.showcase h2,
+.showcase p{
+    margin-bottom: 10px;
+}
+
+/*NEWS CARDS*/
+.news-cards{
+    display: grid;/*grid nos permite crear columnas sin la necesidad de usar flotadores y posiciones*/
+    grid-template-columns: repeat(4, 1fr); /*para obtener las 4 columnas tambien = 1fr 1fr 1fr 1fr*/
+    gap: 25px; /*generamos un espaciado interno entre columnas*/
+    /*PARA SEPARAR LAS IMG DEL HEADER AÑADIMOS UN MARGEN EN SHOW CASE (margin-bottom: 20px)*/
+    margin: 10px 0; /*agregamos el margen para separar los elementos debajo*/
+}
+
+.news-cards img{
+    width: 100%;/*utilizamos el 100% del ancho y modificamos la altura de las img*/
+    height: 180px;
+}
+
+.news-cards h3{
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.news-cards a {
+    padding: 10px;
+    color: #f2f2f2;
+    text-transform: uppercase; /*para que el texto este en mayusculas*/
+    display: inline-block;
+    font-weight: bold; /*letra en negrita*/
+}
+
+.news-cards a:hover{
+    text-decoration: underline;
+}
+
+/*CARDS BANNER ONE*/
+
+.cards-banner-one{
+    width: 100%;
+    height: 350px;
+    background: url('./img/tech-red.jpg');
+    margin-bottom: 40px;/*para crear una separacion con los elementos de abajo*/
+}
+
+.cards-banner-one .content{
+    width: 40%;
+    padding: 90px 0 0 30px;
+    color: #ffffff;
+}
+
+.cards-banner-one p,
+.cards-banner-one h2{
+    margin: 10px 0 30px 0;
+}
+
+.cards-banner-two{
+    width: 100%;
+    height: 400px;
+    background: url('./img/image-five.jpg') no-repeat center center/cover;
+    margin-bottom:40px;
+}
+
+.cards-banner-two .content{
+    width: 40%;
+    padding: 90px 0 0 30px;
+    color: #ffffff;
+}
+
+.cards-banner-two h2,
+.cards-banner-two p{
+    margin: 10px 0 30px 0;
+}
+
+/*SOCIAL**/
+.social{
+    margin: 50px;
+}
+
+.social p{
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.links{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.links a{
+    margin: 0 30px;
+}
+
+.links i{
+    font-size: 50px;
+}
+
+/*FOOTER LINKS*/
+.fotter-links{
+    background: #2f3640;
+    color: #616161;
+    font-size: 12px;
+    padding: 35px 0;
+}
+
+.fotter-container{/*es el encargado de centrar el contenido*/
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.fotter-container ul{
+    margin: 0 auto; /*para que cada columna se coloque en posición**/
+}
+
+.fotter-container ul li{
+    line-height: 2.8; /*realizar espaciado entre los li*/
+}
+
+.footer{
+    background: #2f3640;
+    color: #616161;
+    font-size: 16px;
+    text-align: center;
+    padding: 20px 0;
+    padding-bottom: 20px;/*en el ejemplo observamod para ya le colocamos un padding arriba y abajo de 20px*/
+}
+
+@media(max-width: 700px){/*media queries => consulta de medios sirve para modificar la pagina web o app en funcion del tipo de dispositivos ej.pantalla*/
+
+    .menu-btn{
+        display: block;
+    }
+    
+    .nav-main ul.nav-menu{
+        display: block;
+        position: absolute;/*Para que este encima de todo*/
+        top: 0;
+        left: 0;
+        background-color: #2f3640;
+        height: 100%;
+        padding: 20px;
+        opacity: .9;
+        transform: translateX(-400px);/*margin-left: -5px; => se ve un mejor resultado con: transform*/     
+        transition: transform .5s ease-in-out;
+    }
+
+    .nav-main ul.nav-menu.show{
+        transform: translate(-20px);
+    }
+
+    .nav-main ul.nav-menu li{
+        padding: 20px;
+        font-size: 16px;
+    }
+    
+    .nav-main ul.nav-menu-right{
+        margin-right: 40px;
+    }
+
+    .news-cards{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .cards-banner-one .content,
+    .cards-banner-two .content{
+        width: 80%;
+    }
+    .fotter-links .fotter-container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+} 
+
+@media(max-width: 500px){
+    .news-cards{
+        grid-template-columns: 1fr;
+    }
+    
+    .news-cards img{
+        height: 270px;
+    }
+
+    .cards-banner-one .content,
+    .cards-banner-two .content{
+        width: 100%;
+        padding: 60px 20px;
+    }
+
+    .fotter-links{
+        font-size: 15px;
+    }
+
+    .fotter-links .fotter-container{
+        grid-template-columns: 1fr;
+    }
+
+    .footer{
+        font-size: 20px;
+    }
+
+}
